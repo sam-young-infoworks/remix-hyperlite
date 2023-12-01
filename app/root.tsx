@@ -1,5 +1,4 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node";
+import { json, type LinksFunction, type LoaderFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,13 +6,33 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { createClient, createNavigationFetcher } from "@crystallize/js-api-client";
+import { Header } from "~/ui/components/layout/header";
+import { Footer } from "~/ui/components/layout/footer";
+import sylesheet from "~/styles/index.css";
 
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-];
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: 'stylesheet',
+      href: sylesheet,
+    },
+  ];
+};
 
-export default function App() {
+export const loader: LoaderFunction = async () => {
+  const CrystallizeClient = createClient({
+    tenantIdentifier: 'infoworks',
+  });
+
+  const fetch = createNavigationFetcher(CrystallizeClient).byFolders;
+  const navigation = await fetch('/', 'en', 3);
+  return json({ navigation: navigation.tree.children });
+};
+
+const Document: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <head>
@@ -22,8 +41,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="root flow">
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -31,3 +50,25 @@ export default function App() {
     </html>
   );
 }
+
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { navigation }: any = useLoaderData();
+
+  return (
+    <>
+      <Header navigation={navigation[0].children} />
+      <div>{children}</div>
+      <Footer navigation={navigation} />
+    </>
+  );
+};
+
+export default () => {
+  return (
+    <Document>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </Document>
+  );
+};
