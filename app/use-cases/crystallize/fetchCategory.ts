@@ -1,11 +1,9 @@
-import { createClient } from "@crystallize/js-api-client";
+import { CrystallizeClient } from "@crystallize/js-api-client";
 
 export default async (path: string) => {
-  const CrystallizeClient = createClient({
-    tenantIdentifier: 'infoworks',
-  });
+  const apiClient = CrystallizeClient;
 
-  const data = await CrystallizeClient.catalogueApi(`
+  const data = await apiClient.catalogueApi(`
     query ($language: String!, $path: String!) {
       category: catalogue(language: $language, path: $path) {
         name
