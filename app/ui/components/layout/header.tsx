@@ -26,12 +26,12 @@ export const Header: React.FC<{
       </div>
       <div className="flex gap-2">
         <span className="hover:text-orange-600"><User size={20} /></span>
-        <span className="hover:text-orange-600">
-          <span>{Object.keys(cart.items).reduce((memo: number, key: string) => {
+        <Link to="/cart" className="hover:text-orange-600">
+          {/* <span>{Object.keys(cart.items).reduce((memo: number, key: string) => {
             return memo + cart.items[key].quantity;
-          }, 0)}</span>
+          }, 0)}</span> */}
           <ShoppingBag size={20} />
-        </span>
+        </Link>
       </div>
     </header>
   )
