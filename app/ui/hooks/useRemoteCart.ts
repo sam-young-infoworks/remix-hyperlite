@@ -25,7 +25,6 @@ export function useRemoteCart(): RemoteCart {
         body: JSON.stringify({
           locale: "en",
           items: Object.values(cart.items),
-          withImages: true,
         })
       });
       const hydratedCart = await response.json();

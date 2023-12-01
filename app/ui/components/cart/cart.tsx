@@ -17,7 +17,6 @@ export const HydratedCart: React.FC = () => {
     }
   }
 
-  // console.log(remoteCart);
   const { cart, total } = remoteCart?.hydratedCart || { cart: null, total: null };
   const voucher = {
     code: ""
@@ -41,7 +40,7 @@ export const HydratedCart: React.FC = () => {
         <div className="flow">
           {!cart && <OptimisticHydratedCart />}
           {cart &&
-            cart.items.map((item: any, index: number) => {
+            cart.items.map((item: CartItem, index: number) => {
               // const saving = savings[item.variant.sku]?.quantity > 0 ? savings[item.variant.sku] : null;
               const saving = null;
               return (
@@ -51,7 +50,7 @@ export const HydratedCart: React.FC = () => {
                 >
                   <div className="flex cart-item gap-3 items-center">
                     <Image
-                      {...item.variant.images[0]}
+                      {...item.variant.firstImage}
                       sizes="100px"
                       loading="lazy"
                       alt={item.variant.name}

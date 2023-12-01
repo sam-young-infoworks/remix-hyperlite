@@ -13,7 +13,14 @@ export const action: ActionFunction = async ({ request }) => {
 
   const data = await handleCartRequestPayload(validatePayload<CartPayload>(body, cartPayload), {
     currency: 'USD',
+    perVariant: () => {
+      return {
+        firstImage: {
+          url: true,
+        },
+      };
+    },
   })
 
-  return json({ hydratedCart: data }); 
+  return json({ hydratedCart: data });
 }
