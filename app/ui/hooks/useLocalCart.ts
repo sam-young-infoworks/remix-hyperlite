@@ -21,6 +21,9 @@ export function useLocalCart() {
 
   return {
     cart,
+    isEmpty: () => {
+      return Object.keys(cart.items).length === 0;
+    },
     add: (
       item: {
         name: string;

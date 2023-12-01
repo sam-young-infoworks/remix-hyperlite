@@ -1,10 +1,9 @@
-import Card from "~/ui/components/card/card";
+import { HydratedCart } from "../components/cart/cart";
 
-export default ({ cart }: { cart: any }) => {
-
+export default () => {
   return (
-    <div className="min-h-[100vh] mx-auto container">
-      cart
+    <div className="lg:w-content mx-auto w-full min-h-[90vh]">
+      <HydratedCart />
     </div>
-  )
-}
+  );
+};
