@@ -1,5 +1,5 @@
 import { Image } from "@crystallize/reactjs-components";
-import { Link } from "@remix-run/react";
+import Link from "~/bridge/ui/Link";
 import { Price as CrystallizePrice } from "../../lib/pricing/pricing-component";
 
 export default function Card({ name, variant, path, image, imageSizes }: any) {

@@ -1,7 +1,9 @@
 import Card from "~/ui/components/card/card";
+import { useAppContext } from "../app-context/provider";
 
 export default ({ data }: { data: any }) => {
   const { category } = data;
+  const { path } = useAppContext();
 
   return (
     <div className="min-h-[100vh] mx-auto container">
@@ -13,7 +15,7 @@ export default ({ data }: { data: any }) => {
               key={product.path}
               name={product.name}
               variant={product?.defaultVariant}
-              path={product.path}
+              path={path(product.path)}
               image={product?.defaultVariant.firstImage || ""}
               imageSizes="300px"
             />
