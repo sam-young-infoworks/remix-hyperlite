@@ -89,7 +89,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Header navigation={navigation[0].children} />
-      <div>{children}</div>
+      <div className="mt-8">{children}</div>
       <Footer navigation={navigation} />
     </>
   );

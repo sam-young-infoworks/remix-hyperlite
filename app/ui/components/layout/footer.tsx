@@ -6,10 +6,10 @@ export const Footer: React.FC<{
   navigation: any;
 }> = ({ navigation }) => {
   return (
-    <div className="bg-gray-200  px-4 sm:px-6 lg:px-8">
-      <footer className="container py-3 mx-auto">
+    <footer className="bg-gray-200">
+      <div className="container py-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <img src={Logo} alt="logo" width="170" height="50" />
-      </footer>
-    </div>
+      </div>
+    </footer>
   )
 }

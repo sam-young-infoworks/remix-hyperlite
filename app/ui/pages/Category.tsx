@@ -7,7 +7,7 @@ export default ({ data }: { data: any }) => {
 
   return (
     <div className="min-h-[100vh] container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 className="text-2xl">{category.name}</h1>
+      <h1 className="text-2xl font-bold mb-4">{category.name}</h1>
       <div className="auto-grid">
         {category.products.map((product: any) => {
           return (

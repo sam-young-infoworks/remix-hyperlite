@@ -31,8 +31,10 @@ export default ({ id, cartId }: { id: string, cartId?: string }) => {
   }, [id, tryCount]);
 
   return (
-    <ClientOnly>
-      {order && <div>Order Id: {order.id}</div>}
-    </ClientOnly>
+    <div className="container py-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <ClientOnly>
+        {order && <div>Order Id: {order.id}</div>}
+      </ClientOnly>
+    </div>
   )
 }

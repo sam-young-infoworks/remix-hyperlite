@@ -9,10 +9,10 @@ export default () => {
   const [isGuestCheckout, setIsGuestCheckout] = useState(false);
   const [showPayments, setShowPayments] = useState(false);
   return (
-    <div className="2xl lg:container lg:px-6 px-2 mx-auto min-h-[100vh]">
+    <div className="min-h-[100vh] container py-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex gap-20 lg:flex-row flex-col">
         <CheckoutCart />
-        <div className="rounded pt-5 lg:px-10 lg:w-3/5 w-full px-3">
+        <div className="rounded pt-5 lg:px-10 lg:w-3/5 w-full px-3 lg:pr-0">
           <ClientOnly>
             <>
               <AddressForm

@@ -29,7 +29,7 @@ export const HydratedCart: React.FC = () => {
 
   return (
     <ClientOnly>
-      <div className="mt-10 rounded p-10  mx-auto container">
+      <div>
         <div className="flex mb-4 justify-between">
           <h1 className="font-bold text-2xl">Cart</h1>
           {loading && (
