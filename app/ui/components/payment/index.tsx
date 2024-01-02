@@ -15,15 +15,13 @@ export const Payments: React.FC = () => {
       enabled: state.paymentImplementations.includes('stripe'),
     },
   }
-  // const [selectedPaymentMethodImplementation, setSelectedPaymentMethodImplementation] = useState<string | null>(null);
-  const [selectedPaymentMethodImplementation, setSelectedPaymentMethodImplementation] = useState<string | null>('stripe');
+  const [selectedPaymentMethodImplementation, setSelectedPaymentMethodImplementation] = useState<string | null>(null);
 
   if (selectedPaymentMethodImplementation) {
     const implementation =
       paymentMethodImplementations[selectedPaymentMethodImplementation as keyof typeof paymentMethodImplementations];
     return (
-      <div className="payment-method mb-4 bg-grey mt-5 rounded p-6">
-        <div>howdy 3</div>
+      <div className="payment-method mb-4 bg-gray-100 mt-5 rounded p-6">
         <implementation.component />
       </div>
     );
@@ -47,21 +45,13 @@ export const Payments: React.FC = () => {
               return null;
             }
             if (implementation.renderOnLoad) {
-              return (
-                <>
-                  <div>howdy 1</div>
-                  <implementation.component key={implementationKey} />
-                </>
-              )
+              return <implementation.component key={implementationKey} />
             }
             return (
-              <>
-                <div>howdy 2</div>
-                <implementation.button
-                  key={implementationKey}
-                  onClick={() => setSelectedPaymentMethodImplementation(implementationKey)}
-                />
-              </>
+              <implementation.button
+                key={implementationKey}
+                onClick={() => setSelectedPaymentMethodImplementation(implementationKey)}
+              />
             );
           })}
         </div>

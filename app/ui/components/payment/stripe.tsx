@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocalStorage } from '@rehooks/local-storage';
-import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { Elements, PaymentElement, useElements, useStripe, AddressElement, ExpressCheckoutElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { ServiceAPI } from '~/use-cases/service-api';
@@ -126,9 +126,16 @@ const StripCheckoutForm: React.FC = () => {
 
     return (
         <form id="stripe-payment-form" onSubmit={handleSubmit}>
+            {/* <AddressElement /> */}
             <PaymentElement id="payment-element" />
             <br />
-            <StripeButton paying={state.processing || !stripe || !elements} />
+            <button 
+                type="submit" 
+                disabled={state.processing || !stripe || !elements}
+                className="w-full text-white text-center mt-2 py-2 px-4 rounded-md px-8 bg-blue-500 hover:bg-blue-600"
+            >
+                Pay
+            </button>
         </form>
     );
 };

@@ -7,8 +7,8 @@ import { cartWrapperRepository } from '~/use-cases/services.server';
 export const action: ActionFunction = async ({ request }) => {
     const requestContext = getContext(request);
     const { secret: storefront } = await getStoreFront(requestContext.host);
-    // const body = await request.json();
     // body needs to be in raw form and not json form
+    // const body = await request.json();
     const body = await request.text();
     const data = await receivePaymentEvent(
         cartWrapperRepository,

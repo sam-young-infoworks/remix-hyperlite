@@ -14,7 +14,7 @@ export const Header: React.FC<{
   const { path } = useAppContext();
 
   return (
-    <header className="container py-3 mx-auto flex items-center justify-between">
+    <header className="container py-3 mx-auto flex items-center justify-between max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex items-center gap-6">
         <Link className="font-bold text-2xl" to={path("/")}>
           <img src={Logo} alt="logo" width="170" height="50" />
@@ -27,16 +27,17 @@ export const Header: React.FC<{
           })}
         </nav>
       </div>
-      <div className="flex gap-2">
-        <span className="hover:text-orange-600"><User size={20} /></span>
+      <div className="flex gap-3">
+        <span className="hover:text-orange-600"><User size={18} /></span>
         <Link to={path("/cart")} className="hover:text-orange-600">
-          {/* <ClientOnly>
-
-          </ClientOnly> */}
-          {/* <span>{Object.keys(cart.items).reduce((memo: number, key: string) => {
-            return memo + cart.items[key].quantity;
-          }, 0)}</span> */}
-          <ShoppingBag size={20} />
+          <div className="flex gap-1 align-items-center">
+            <ShoppingBag size={18} />
+            <ClientOnly>
+              <span className="text-sm">({Object.keys(cart.items).reduce((memo: number, key: string) => {
+                return memo + cart.items[key].quantity;
+              }, 0)})</span>
+            </ClientOnly>
+          </div>
         </Link>
       </div>
     </header>

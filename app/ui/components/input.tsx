@@ -25,7 +25,7 @@ export const Input: React.FC<{
                 name={name}
                 onChange={onChange}
                 required={required}
-                className="bg-grey"
+                className="bg-gray-100"
                 disabled={disabled}
                 value={value}
             />
