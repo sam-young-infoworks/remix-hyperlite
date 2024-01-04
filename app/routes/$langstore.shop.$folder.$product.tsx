@@ -1,7 +1,7 @@
 import { LoaderFunction, json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Product from "~/ui/pages/Product";
-import fetchProduct from "~/use-cases/crystallize/fetchProduct";
+import fetchProduct from "~/use-cases/crystallize/read/fetchProduct";
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const crystallizePath = `/shop/${params.folder}/${params.product}`;
