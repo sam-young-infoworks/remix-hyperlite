@@ -22,7 +22,15 @@ export const HydratedCart: React.FC = () => {
   if (isEmpty()) {
     return (
       <ClientOnly>
-        <div>cart is empty</div>
+        <div className="flex justify-center items-center">
+          <div>
+            <h1 className="font-bold text-2xl">Cart is empty</h1>
+            <br />
+            <Link to={path("/shop/backpacks")}>
+              Shop
+            </Link>
+          </div>
+        </div>
       </ClientOnly>
     )
   }

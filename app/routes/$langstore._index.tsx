@@ -1,5 +1,5 @@
-import { Outlet } from "@remix-run/react";
+import Landing from "~/ui/pages/Landing"
 
 export default () => {
-  return <Outlet />;
+  return <Landing />
 }

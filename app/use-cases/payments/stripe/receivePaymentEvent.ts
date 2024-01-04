@@ -39,7 +39,6 @@ export default async (
                         provider: 'stripe',
                         stripe: {
                             paymentIntentId: event.data.object.id,
-                            // paymentMethod: event.data.object.charges.data[0].payment_method_details.type,
                             paymentMethod: event.data.object.payment_method,
                             stripe: `eventId:${event.id}`,
                             // metadata: event.data.object.charges.data[0].receipt_url,

@@ -44,7 +44,15 @@ export const ServiceAPI = ({ locale, language, serviceApiUrl }: ServiceAPIContex
           withImages: true,
           extra: cart.extra,
       }), 
+    fetchOrders: () => getJson<any>(serviceApiUrl + '/orders'),
     fetchOrder: (orderId: string, cartId?: string) =>
       getJson<any>(serviceApiUrl + '/orders/' + orderId + (cartId ? '?cartId=' + cartId : '')),
+    registerAndSendMagickLink: (userInfos: any) => postJson<any>(serviceApiUrl + '/magiclink/register', userInfos),
+      sendMagickLink: (email: string, callbackPath: string) =>
+          postJson<any>(serviceApiUrl + '/magiclink/register?callbackPath=' + callbackPath, {
+              email,
+              firstname: '',
+              lastname: '',
+          }),
   }
 }

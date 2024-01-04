@@ -23,15 +23,23 @@ export function createMailer(dsn: string): Mailer {
     };
   }
 
-  let realDSN = dsn;
-  const config = require('platformsh-config').config();
-  if (config.isValidPlatform()) {
-    realDSN = `smtp://${process.env.PLATFORM_SMTP_HOST}:25/?pool=true`;
-  }
-  const transporter = nodemailer.createTransport(realDSN);
+  // let realDSN = dsn;
+  // const config = require('platformsh-config').config();
+  // if (config.isValidPlatform()) {
+  //   realDSN = `smtp://${process.env.PLATFORM_SMTP_HOST}:25/?pool=true`;
+  // }
+  // const transporter = nodemailer.createTransport(realDSN);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'samcyoung97@gmail.com',
+      pass: 'ghzz stqu hata zhwl'
+    }
+  });
   transporter.verify((error, success) => {
     if (!success) {
-      console.log(`DSN ${realDSN}: ${error}`);
+      // console.log(`DSN ${realDSN}: ${error}`);
+      console.log(error);
     }
   });
 

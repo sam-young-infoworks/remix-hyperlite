@@ -11,11 +11,11 @@ export const Payments: React.FC = () => {
       name: 'Stripe',
       component: Stripe,
       button: StripeButton,
-      renderOnLoad: false,
+      renderOnLoad: true,
       enabled: state.paymentImplementations.includes('stripe'),
     },
   }
-  const [selectedPaymentMethodImplementation, setSelectedPaymentMethodImplementation] = useState<string | null>(null);
+  const [selectedPaymentMethodImplementation, setSelectedPaymentMethodImplementation] = useState<string | null>('stripe');
 
   if (selectedPaymentMethodImplementation) {
     const implementation =

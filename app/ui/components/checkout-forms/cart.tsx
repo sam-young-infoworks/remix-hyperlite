@@ -26,7 +26,7 @@ export const CheckoutCart: React.FC = () => {
   const voucher = undefined;
   return (
     <div className="lg:w-2/5 w-full">
-      <h1 className="font-bold text-2xl mt-10 mb-5">Your Cart</h1>
+      <h1 className="font-bold text-xl mb-5">Your Cart</h1>
       <div className="flow">
         {!cart && <OptimisticHydratedCart />}
         {cart &&

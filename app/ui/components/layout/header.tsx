@@ -28,7 +28,9 @@ export const Header: React.FC<{
         </nav>
       </div>
       <div className="flex gap-3">
-        <span className="hover:text-orange-600"><User size={18} /></span>
+        <Link to={path('/orders')} className="hover:text-orange-600">
+          <User size={18} />
+        </Link>
         <Link to={path("/cart")} className="hover:text-orange-600">
           <div className="flex gap-1 align-items-center">
             <ShoppingBag size={18} />

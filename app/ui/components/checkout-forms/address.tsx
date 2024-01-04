@@ -124,7 +124,7 @@ export const AddressForm: React.FC<{ title: string; onValidSubmit: Function }> =
                         disabled={isReadonly}
                     />
                 </div>
-                {!isReadonly && (
+                {/* {!isReadonly && (
                     <button
                         data-testid="checkout-next-step-button"
                         className="bg-black text-white rounded-md px-6 py-3 mt-5 float-right"
@@ -133,7 +133,7 @@ export const AddressForm: React.FC<{ title: string; onValidSubmit: Function }> =
                     >
                         {'Next'}
                     </button>
-                )}
+                )} */}
             </form>
         </div>
     );

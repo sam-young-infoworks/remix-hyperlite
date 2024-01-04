@@ -5,11 +5,12 @@ import { privateJson } from "~/core/bridge/privateJson.server";
 import { getContext } from "~/use-cases/http/utils";
 import { cartWrapperRepository } from "~/use-cases/services.server";
 import { getStoreFront } from "~/use-cases/storefront.server";
+import { authenticatedUser } from '~/core/authentication.server';
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const requestContext = getContext(request);
   const { secret: storefront } = await getStoreFront(requestContext.host);
-  const auth: any = undefined;
+  const auth: any = await authenticatedUser(request);
   const cartId = requestContext.url.searchParams.get('cartId');
 
   let cartWrapper: CartWrapper | null | undefined = cartId ? await cartWrapperRepository.find(cartId) : null;
